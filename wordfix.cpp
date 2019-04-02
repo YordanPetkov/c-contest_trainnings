@@ -1,40 +1,35 @@
 #include<iostream>
-#include<string>
+#include<vector>
 using namespace std;
+vector<int> RegPos[1000];
+int pos[1000];
 int main()
 {
-    string s,s1,ss="",s1s1="";
-    cin>>ss>>s1s1;
-    int n=s.size(),br=0;
-
-    /*for(int i=0;i<n;i++)
+    string s,s1;
+    cin>>s>>s1;
+    int n=s.size(),sum=0;
+    
+    for(int i=0;i<n;i++)
     {
-
-        if(s[i]!=s1[i])
-        {
-            ss+=s[i];
-            s1s1+=s1[i];
-        }
-
-    }*/
-    for(int i=0;ss.size()!=0;i++)
-    {
-        if(ss==s1s1)break;
-        if(ss[i]==s1s1[i]){goto end;}
-        for(int j=0;j<s1s1.size();j++)
-        {
-            if(i==j)continue;
-            if(s1s1[j]==ss[j])continue;
-            if(ss[i]==s1s1[j]){swap(s1s1[i],s1s1[j]);br+=max(j,i)-min(i,j);}
-           // cout<<i<<" "<<j<<endl;
-           // cout<<ss<<" "<<s1s1<<endl;
-            
-        }
-        end:
-        if(i==ss.size()-2)i=0;
+        RegPos[s1[i]-0].push_back(i);
+       // cout<<s1[i]-0<<endl;
     }
-    //cout<<ss<<endl;
-   // cout<<s1s1<<endl;
-    cout<<br<<endl;
-    return 0;
+    
+    
+    for(int i = 0; i < n; i++)
+    {
+        int j=s[i]-0;
+     if(i > RegPos[j][pos[j]])sum += i - RegPos[j][pos[j]];
+     pos[j]++;
+    }
+    
+    /*for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(s[i]==s1[j] && s[j] != s1[j] && s[i]!=s1[i]){sum+=i-j;swap(s[i],s[j]);continue;}
+           // cout<<i<<" "<<j<<" "<<s[i]<<" "<<s1[j]<<" "<<sum<<endl;
+        }
+    }*/
+    cout<<sum<<endl;
 }
